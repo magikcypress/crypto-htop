@@ -3,7 +3,7 @@
 # Build script for GitHub releases
 # Usage: ./build_release.sh [version]
 
-VERSION=${1:-"1.0.0"}
+VERSION=${1:-"1.0.2"}
 PLATFORM=$(uname -s)
 ARCH=$(uname -m)
 
@@ -15,7 +15,17 @@ rm -rf build/ dist/
 
 # Build the binary
 echo "📦 Creating binary..."
-pyinstaller --onefile --name crypto-top crypto_top.py
+# Activate virtual environment and build
+source venv/bin/activate && pyinstaller crypto-top.spec
+
+# Compress the binary with UPX
+echo "🗜️ Compressing binary with UPX..."
+if command -v upx &> /dev/null; then
+    upx --best --lzma dist/crypto-top
+    echo "✅ Binary compressed with UPX"
+else
+    echo "⚠️ UPX not found, skipping compression"
+fi
 
 # Create the release directory
 RELEASE_DIR="crypto-top-v$VERSION-$PLATFORM-$ARCH"

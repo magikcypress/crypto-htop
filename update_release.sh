@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Script to update release v1.0.1 on GitHub
-echo "🔄 Updating release v1.0.1 on GitHub..."
+# Script to update release v1.0.3 on GitHub
+echo "🔄 Updating release v1.0.3 on GitHub..."
 
 # Configuration
 REPO="magikcypress/crypto-top"
-TAG="v1.0.1"
-RELEASE_NAME="Crypto Top v1.0.1"
-RELEASE_FILE="crypto-top-v1.0.1-Darwin-arm64.tar.gz"
+TAG="v1.0.3"
+RELEASE_NAME="Crypto Top v1.0.3"
+RELEASE_FILE="crypto-top-v1.0.3-Darwin-arm64.tar.gz"
 
 # Check if the file exists
 if [ ! -f "$RELEASE_FILE" ]; then
@@ -37,7 +37,7 @@ RELEASE_INFO=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
 
 echo "Debug: $RELEASE_INFO"
 
-RELEASE_ID=$(echo "$RELEASE_INFO" | grep -o '"id":[0-9]*' | head -1 | cut -d: -f2 | tr -d ' ')
+RELEASE_ID=$(echo "$RELEASE_INFO" | grep -m1 '"id":' | grep -o '[0-9]\+')
 
 if [ -z "$RELEASE_ID" ]; then
     echo "❌ Error: Unable to find release $TAG"
@@ -67,7 +67,7 @@ UPDATE_RESPONSE=$(curl -s -X PATCH \
     -H "Accept: application/vnd.github.v3+json" \
     -d "{
         \"name\": \"$RELEASE_NAME\",
-        \"body\": \"## Crypto Top v1.0.1\\n\\n### What's New\\n- 🌍 **English translation**: All user interface and messages are now in English\\n- 🎨 **Improved README**: Added screenshot and better documentation\\n- 🔧 **Code cleanup**: Better error handling and comments\\n\\n### Features\\n- Real-time cryptocurrency data display\\n- Top 50 cryptocurrencies by market cap\\n- 24h and 1h price evolution charts\\n- Auto-refresh every 30 seconds\\n- Colored terminal interface\\n\\n### Installation\\n1. Download the tar.gz file\\n2. Extract the archive: \`tar -xzf crypto-top-v1.0.1-Darwin-arm64.tar.gz\`\\n3. Run: \`./crypto-top\`\\n\\n### Usage\\n\`\`\`bash\\n./crypto-top\\n\`\`\`\\n\\n### System Requirements\\n- macOS ARM64 (Apple Silicon)\\n- No additional dependencies required\\n\\n### Previous Release\\n- [v1.0.0](https://github.com/magikcypress/crypto-top/releases/tag/v1.0.0)\"
+        \"body\": \"## Crypto Top v1.0.3\\n\\n### What's New\\n- 🐍 All dependencies are now bundled (no more ModuleNotFoundError)\\n- 🌍 English interface and documentation\\n- 🎨 Improved README with screenshot\\n- 🔧 Code cleanup and better error handling\\n\\n### Features\\n- Real-time cryptocurrency data display\\n- Top 50 cryptocurrencies by market cap\\n- 24h and 1h price evolution charts\\n- Auto-refresh every 30 seconds\\n- Colored terminal interface\\n\\n### Installation\\n1. Download the tar.gz file\\n2. Extract the archive: \`tar -xzf crypto-top-v1.0.3-Darwin-arm64.tar.gz\`\\n3. Run: \`./crypto-top\`\\n\\n### Usage\\n\`\`\`bash\\n./crypto-top\\n\`\`\`\\n\\n### System Requirements\\n- macOS ARM64 (Apple Silicon)\\n- No additional dependencies required\\n\\n### Previous Release\\n- [v1.0.2](https://github.com/magikcypress/crypto-top/releases/tag/v1.0.2)\"
     }" \
     "https://api.github.com/repos/$REPO/releases/$RELEASE_ID")
 
