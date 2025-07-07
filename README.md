@@ -9,18 +9,18 @@ A simple Python script to display the top 20 cryptocurrencies in the terminal wi
 ### Download and Install
 
 1. **Download** the latest release from GitHub:
-   - [crypto-htop v1.1.1](https://github.com/magikcypress/crypto-htop/releases/tag/v1.1.1)
+   - [crypto-htop v1.1.2](https://github.com/magikcypress/crypto-htop/releases/tag/v1.1.2)
 
 2. **Extract** the archive:
 
    ```bash
-   tar -xzf crypto-htop-v1.1.1-Darwin-arm64.tar.gz
+   tar -xzf crypto-htop-v1.1.2-Darwin-arm64.tar.gz
    ```
 
 3. **Install** globally:
 
    ```bash
-   cd crypto-htop-v1.1.1-Darwin-arm64
+   cd crypto-htop-v1.1.2-Darwin-arm64
    ./install.sh
    ```
 
@@ -139,8 +139,9 @@ Contributions are welcome! Feel free to:
 
 ## 🚀 Releases
 
-### Latest Release: v1.1.1
+### Latest Release: v1.1.2
 
+- **Project renamed** to crypto-htop
 - **Onefile mode** - Single executable, no complex structure
 - **Auto-quarantine removal** - No more "Python.framework is damaged" errors
 - **Ultra-fast startup** - Optimized for instant launch
@@ -148,6 +149,7 @@ Contributions are welcome! Feel free to:
 
 ### Previous Releases
 
+- **v1.1.1**: Onefile mode with auto-quarantine removal
 - **v1.1.0**: Auto-remove macOS quarantine
 - **v1.0.9**: Fixed install script for onedir mode
 - **v1.0.8**: All required files at root
