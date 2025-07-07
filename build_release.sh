@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script de build pour les releases GitHub
+# Build script for GitHub releases
 # Usage: ./build_release.sh [version]
 
 VERSION=${1:-"1.0.0"}
@@ -9,37 +9,52 @@ ARCH=$(uname -m)
 
 echo "🚀 Building crypto-top v$VERSION for $PLATFORM-$ARCH"
 
-# Nettoyer les builds précédents
+# Clean previous builds
 echo "🧹 Cleaning previous builds..."
 rm -rf build/ dist/
 
-# Créer le binaire
+# Build the binary
 echo "📦 Creating binary..."
 pyinstaller --onefile --name crypto-top crypto_top.py
 
-# Créer le dossier de release
+# Create the release directory
 RELEASE_DIR="crypto-top-v$VERSION-$PLATFORM-$ARCH"
 mkdir -p "$RELEASE_DIR"
 
-# Copier les fichiers
+# Copy files
 echo "📋 Copying files..."
 cp dist/crypto-top "$RELEASE_DIR/"
 cp README.md "$RELEASE_DIR/"
 cp LICENSE "$RELEASE_DIR/"
 
-# Créer un script d'installation
+# Create a smart install script
 cat > "$RELEASE_DIR/install.sh" << 'EOF'
 #!/bin/bash
+set -e
+
 echo "Installing crypto-top..."
-sudo cp crypto-top /usr/local/bin/
-sudo chmod +x /usr/local/bin/crypto-top
+
+# Recommended install path for Apple Silicon
+TARGET="/opt/homebrew/bin/crypto-top"
+
+# If /opt/homebrew/bin/ does not exist, use ~/bin/
+if [ ! -d "/opt/homebrew/bin" ]; then
+    mkdir -p "$HOME/bin"
+    TARGET="$HOME/bin/crypto-top"
+    echo "💡 /opt/homebrew/bin/ does not exist, installing in $HOME/bin/"
+fi
+
+cp crypto-top "$TARGET"
+chmod +x "$TARGET"
+
 echo "✅ crypto-top installed successfully!"
-echo "Usage: crypto-top"
+echo "Usage: $(basename $TARGET)"
+echo "If you want to use it everywhere, add $(dirname $TARGET) to your PATH."
 EOF
 
 chmod +x "$RELEASE_DIR/install.sh"
 
-# Créer l'archive
+# Create the archive
 echo "📦 Creating archive..."
 tar -czf "$RELEASE_DIR.tar.gz" "$RELEASE_DIR"
 
