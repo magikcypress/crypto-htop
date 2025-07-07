@@ -293,4 +293,4 @@ $RECYCLE.BIN/
 # Project specific
 crypto-top-v1.0.0-Darwin-arm64/
 *.tar.gz
-create_release.sh 
+publish_release.sh
