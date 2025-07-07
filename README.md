@@ -4,7 +4,66 @@
 
 A simple Python script to display the top 20 cryptocurrencies in the terminal with a colored table.
 
-## 🚀 Installation
+## 🚀 Quick Start (Recommended)
+
+### Download and Install
+
+1. **Download** the latest release from GitHub:
+   - [crypto-top v1.1.1](https://github.com/magikcypress/crypto-top/releases/tag/v1.1.1)
+
+2. **Extract** the archive:
+
+   ```bash
+   tar -xzf crypto-top-v1.1.1-Darwin-arm64.tar.gz
+   ```
+
+3. **Install** globally:
+
+   ```bash
+   cd crypto-top-v1.1.1-Darwin-arm64
+   ./install.sh
+   ```
+
+4. **Use** from anywhere:
+
+   ```bash
+   crypto-top
+   ```
+
+## 📊 Features
+
+- **Real-time data** from CoinGecko API
+- **Top 20 cryptocurrencies** by market capitalization
+- **Colored table** with price evolution charts
+- **Auto-refresh** every 30 seconds
+- **Sparkline charts** for 24h and 1h price evolution
+- **Error handling** for network issues
+- **Ultra-fast startup** (optimized binary)
+
+## 🖥️ System Requirements
+
+- **macOS ARM64** (Apple Silicon) - M1, M2, M3
+- **No additional dependencies** required (everything is bundled)
+
+## 📊 Usage
+
+Run the script:
+
+```bash
+crypto-top
+```
+
+The script displays:
+
+- **Rank** and **symbol** of each cryptocurrency
+- **Current price** in USD
+- **24h variation** (green if positive, red if negative)
+- **24h evolution chart** (sparkline)
+- **1h evolution chart** (sparkline)
+
+To stop the script, press `Ctrl+C` in the terminal.
+
+## 🔧 Development Installation
 
 ### Prerequisites
 
@@ -13,10 +72,10 @@ A simple Python script to display the top 20 cryptocurrencies in the terminal wi
 
 ### Installation with virtual environment
 
-1. **Clone or download the project**
+1. **Clone the project**
 
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/magikcypress/crypto-top.git
    cd crypto-top
    ```
 
@@ -46,43 +105,16 @@ A simple Python script to display the top 20 cryptocurrencies in the terminal wi
    pip install -r requirements.txt
    ```
 
-## 📊 Usage
+5. **Run the script**
 
-Run the script:
-
-```bash
-python crypto_top.py
-```
-
-The script:
-
-- Immediately displays the table of the top 20 cryptocurrencies
-- Automatically refreshes data every **30 seconds**
-- Shows:
-  - Cryptocurrency rank
-  - Full name
-  - Symbol
-  - Current price in USD
-  - 24h variation (green if positive, red if negative)
-  - **24h evolution chart** (sparkline)
-  - **1h evolution chart** (sparkline)
-
-To stop the script, press `Ctrl+C` in the terminal.
+   ```bash
+   python crypto_top.py
+   ```
 
 ## 🛠️ Dependencies
 
 - `requests` : For API calls
 - `rich` : For colored display and real-time refresh
-
-## 📝 Features
-
-- Real-time data retrieval via CoinGecko API
-- Display of top 20 cryptocurrencies by market capitalization
-- Colored and formatted table with evolution charts
-- Automatic refresh every 30 seconds
-- Immediate display on launch
-- Connection error handling
-- Sparkline charts to visualize price evolution over 24h and 1h
 
 ## 🔧 Customization
 
@@ -107,21 +139,51 @@ Contributions are welcome! Feel free to:
 
 ## 🚀 Releases
 
-### Installation from releases
+### Latest Release: v1.1.1
 
-1. **Download** the latest release from GitHub
-2. **Extract** the archive: `tar -xzf crypto-top-v1.0.0-Darwin-arm64.tar.gz`
-3. **Install**: `cd crypto-top-v1.0.0-Darwin-arm64 && ./install.sh`
-4. **Use**: `crypto-top`
+- **Onefile mode** - Single executable, no complex structure
+- **Auto-quarantine removal** - No more "Python.framework is damaged" errors
+- **Ultra-fast startup** - Optimized for instant launch
+- **macOS ARM64** compatibility
+
+### Previous Releases
+
+- **v1.1.0**: Auto-remove macOS quarantine
+- **v1.0.9**: Fixed install script for onedir mode
+- **v1.0.8**: All required files at root
+- **v1.0.7**: Binary at archive root
+- **v1.0.6**: Ultra-fast startup (onedir mode)
+- **v1.0.5**: Optimized binary size (23% smaller)
+- **v1.0.4**: Excluded unnecessary modules
+- **v1.0.3**: All dependencies bundled
+- **v1.0.2**: English interface
+- **v1.0.1**: Initial release
 
 ### Create a release
 
 ```bash
 # Create a binary for the release
-./build_release.sh 1.0.0
+./build_release.sh 1.1.2
 
-# The archive will be created: crypto-top-v1.0.0-Darwin-arm64.tar.gz
+# Publish to GitHub
+./publish_release.sh 1.1.2 "Release notes"
 ```
+
+## 🐛 Troubleshooting
+
+### macOS "Python.framework is damaged" error
+
+If you see this error, run:
+
+```bash
+xattr -dr com.apple.quarantine /path/to/crypto-top
+```
+
+The install script automatically handles this for you.
+
+### Installation issues
+
+Make sure you have write permissions to `/opt/homebrew/bin/` or `~/bin/`.
 
 ## 📞 Support
 
