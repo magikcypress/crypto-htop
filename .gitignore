@@ -41,7 +41,7 @@ ENV/
 Thumbs.db
 
 # Build artifacts
-crypto-top-v*-*/
+crypto-htop-v*-*/
 *.tar.gz
 *.zip
 
@@ -291,6 +291,5 @@ $RECYCLE.BIN/
 *~
 
 # Project specific
-crypto-top-v1.0.0-Darwin-arm64/
 *.tar.gz
 publish_release.sh
