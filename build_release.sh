@@ -45,21 +45,30 @@ set -e
 echo "Installing crypto-top..."
 
 # Recommended install path for Apple Silicon
-TARGET="/opt/homebrew/bin/crypto-top"
+TARGET_DIR="/opt/homebrew/bin"
 
 # If /opt/homebrew/bin/ does not exist, use ~/bin/
-if [ ! -d "/opt/homebrew/bin" ]; then
-    mkdir -p "$HOME/bin"
-    TARGET="$HOME/bin/crypto-top"
+if [ ! -d "$TARGET_DIR" ]; then
+    TARGET_DIR="$HOME/bin"
+    mkdir -p "$TARGET_DIR"
     echo "💡 /opt/homebrew/bin/ does not exist, installing in $HOME/bin/"
 fi
 
-cp crypto-top "$TARGET"
-chmod +x "$TARGET"
+# Copy the binary (onefile mode - no _internal needed)
+cp crypto-top "$TARGET_DIR/"
+
+chmod +x "$TARGET_DIR/crypto-top"
+
+# Remove macOS quarantine attributes to avoid "Python.framework is damaged" error
+echo "🔓 Removing macOS quarantine attributes..."
+xattr -dr com.apple.quarantine "$TARGET_DIR/crypto-top" 2>/dev/null || true
 
 echo "✅ crypto-top installed successfully!"
-echo "Usage: $(basename $TARGET)"
-echo "If you want to use it everywhere, add $(dirname $TARGET) to your PATH."
+echo "Usage: $TARGET_DIR/crypto-top"
+echo "If you want to use it everywhere, add $TARGET_DIR to your PATH."
+echo ""
+echo "💡 Note: If you still see 'Python.framework is damaged', run:"
+echo "   xattr -dr com.apple.quarantine $TARGET_DIR/crypto-top"
 EOF
 
 chmod +x "$RELEASE_DIR/install.sh"
