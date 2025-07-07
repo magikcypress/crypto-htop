@@ -1,5 +1,7 @@
 # Crypto Top 20 - Terminal Display
 
+![Crypto Top](assets/crypto-top.png)
+
 A simple Python script to display the top 20 cryptocurrencies in the terminal with a colored table.
 
 ## 🚀 Installation
