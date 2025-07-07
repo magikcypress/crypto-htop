@@ -1,6 +1,6 @@
-# Crypto Htop 20 - Terminal Display
+# Crypto htop 20 - Terminal Display
 
-![Crypto Htop](assets/crypto-htop.png)
+![Crypto htop](assets/crypto-htop.png)
 
 A simple Python script to display the top 20 cryptocurrencies in the terminal with a colored table.
 
