@@ -4,10 +4,10 @@
 echo "🔄 Updating release v1.0.3 on GitHub..."
 
 # Configuration
-REPO="magikcypress/crypto-top"
+REPO="magikcypress/crypto-htop"
 TAG="v1.0.3"
-RELEASE_NAME="Crypto Top v1.0.3"
-RELEASE_FILE="crypto-top-v1.0.3-Darwin-arm64.tar.gz"
+RELEASE_NAME="Crypto Htop v1.0.3"
+RELEASE_FILE="crypto-htop-v1.0.3-Darwin-arm64.tar.gz"
 
 # Check if the file exists
 if [ ! -f "$RELEASE_FILE" ]; then

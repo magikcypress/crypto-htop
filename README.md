@@ -1,6 +1,6 @@
-# Crypto Top 20 - Terminal Display
+# Crypto Htop 20 - Terminal Display
 
-![Crypto Top](assets/crypto-top.png)
+![Crypto Htop](assets/crypto-htop.png)
 
 A simple Python script to display the top 20 cryptocurrencies in the terminal with a colored table.
 
@@ -9,25 +9,25 @@ A simple Python script to display the top 20 cryptocurrencies in the terminal wi
 ### Download and Install
 
 1. **Download** the latest release from GitHub:
-   - [crypto-top v1.1.1](https://github.com/magikcypress/crypto-top/releases/tag/v1.1.1)
+   - [crypto-htop v1.1.1](https://github.com/magikcypress/crypto-htop/releases/tag/v1.1.1)
 
 2. **Extract** the archive:
 
    ```bash
-   tar -xzf crypto-top-v1.1.1-Darwin-arm64.tar.gz
+   tar -xzf crypto-htop-v1.1.1-Darwin-arm64.tar.gz
    ```
 
 3. **Install** globally:
 
    ```bash
-   cd crypto-top-v1.1.1-Darwin-arm64
+   cd crypto-htop-v1.1.1-Darwin-arm64
    ./install.sh
    ```
 
 4. **Use** from anywhere:
 
    ```bash
-   crypto-top
+   crypto-htop
    ```
 
 ## 📊 Features
@@ -50,7 +50,7 @@ A simple Python script to display the top 20 cryptocurrencies in the terminal wi
 Run the script:
 
 ```bash
-crypto-top
+crypto-htop
 ```
 
 The script displays:
@@ -75,8 +75,8 @@ To stop the script, press `Ctrl+C` in the terminal.
 1. **Clone the project**
 
    ```bash
-   git clone https://github.com/magikcypress/crypto-top.git
-   cd crypto-top
+   git clone https://github.com/magikcypress/crypto-htop.git
+   cd crypto-htop
    ```
 
 2. **Create a virtual environment**
@@ -108,7 +108,7 @@ To stop the script, press `Ctrl+C` in the terminal.
 5. **Run the script**
 
    ```bash
-   python crypto_top.py
+   python crypto_htop.py
    ```
 
 ## 🛠️ Dependencies
@@ -176,7 +176,7 @@ Contributions are welcome! Feel free to:
 If you see this error, run:
 
 ```bash
-xattr -dr com.apple.quarantine /path/to/crypto-top
+xattr -dr com.apple.quarantine /path/to/crypto-htop
 ```
 
 The install script automatically handles this for you.
